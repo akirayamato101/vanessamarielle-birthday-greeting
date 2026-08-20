@@ -44,7 +44,20 @@ nextBtn.addEventListener('click', () => goToPage(current + 1));
 
 document.getElementById('enterBtn').addEventListener('click', () => {
   burstConfetti();
-  setTimeout(() => goToPage(1), 350);
+  setTimeout(() => goToPage(2), 350);
+});
+
+// =========================================================
+// ENVELOPE INTRO
+// =========================================================
+const envelopeBtn = document.getElementById('envelopeBtn');
+let envelopeOpened = false;
+
+envelopeBtn.addEventListener('click', () => {
+  if (envelopeOpened) return;
+  envelopeOpened = true;
+  envelopeBtn.classList.add('opened');
+  setTimeout(() => goToPage(1), 1100);
 });
 
 // allow left/right arrow keys to browse

@@ -37,8 +37,24 @@
   <!-- ============ APP SHELL ============ -->
   <main id="book">
 
-    <!-- PAGE 0 — COVER -->
-    <section class="page cover-page active" data-page="0">
+    <!-- PAGE 0 — ENVELOPE INTRO -->
+    <section class="page envelope-page active" data-page="0">
+      <div class="envelope-scene">
+        <p class="envelope-hint">a little something for you</p>
+        <button class="envelope" id="envelopeBtn" aria-label="Open the envelope">
+          <span class="envelope-back"></span>
+          <span class="envelope-letter">
+            <span class="letter-heart">🎀</span>
+          </span>
+          <span class="envelope-flap"></span>
+          <span class="envelope-seal">💌</span>
+        </button>
+        <p class="envelope-caption">please open it</p>
+      </div>
+    </section>
+
+    <!-- PAGE 1 — COVER -->
+    <section class="page cover-page" data-page="1">
       <div class="confetti-layer" id="confetti"></div>
       <div class="cover-frame">
         <div class="polaroid big-polaroid">
@@ -59,8 +75,8 @@
       </div>
     </section>
 
-    <!-- PAGE 1 — BIRTHDAY MESSAGE -->
-    <section class="page message-page" data-page="1">
+    <!-- PAGE 2 — BIRTHDAY MESSAGE -->
+    <section class="page message-page" data-page="2">
       <div class="page-inner">
         <p class="eyebrow">page one</p>
         <h2 class="page-title">Birthday Message</h2>
@@ -84,8 +100,8 @@
       </div>
     </section>
 
-    <!-- PAGE 2 — HER GALLERY -->
-    <section class="page gallery-page" data-page="2">
+    <!-- PAGE 3 — HER GALLERY -->
+    <section class="page gallery-page" data-page="3">
       <div class="page-inner">
         <p class="eyebrow">page two</p>
         <h2 class="page-title">Her Gallery</h2>
@@ -133,9 +149,10 @@
     <button class="nav-arrow prev" id="prevBtn" aria-label="Previous page">‹</button>
 
     <div class="page-dots" id="pageDots">
-      <button class="dot active" data-goto="0" aria-label="Cover"><span>🎀</span></button>
-      <button class="dot" data-goto="1" aria-label="Birthday Message"><span>💌</span></button>
-      <button class="dot" data-goto="2" aria-label="Her Gallery"><span>🖼️</span></button>
+      <button class="dot active" data-goto="0" aria-label="Envelope"><span>✉️</span></button>
+      <button class="dot" data-goto="1" aria-label="Cover"><span>🎀</span></button>
+      <button class="dot" data-goto="2" aria-label="Birthday Message"><span>💌</span></button>
+      <button class="dot" data-goto="3" aria-label="Her Gallery"><span>🖼️</span></button>
     </div>
 
     <button class="nav-arrow next" id="nextBtn" aria-label="Next page">›</button>
