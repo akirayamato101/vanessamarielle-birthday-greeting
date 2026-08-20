@@ -320,11 +320,22 @@ button{ font-family:inherit; cursor:pointer; border:none; background:none; }
 
 .cover-frame{
   display:flex;
-  flex-direction:column;
+  flex-direction:row-reverse;
   align-items:center;
-  gap:6px;
+  justify-content:center;
+  gap:clamp(30px, 6vw, 80px);
   position:relative;
   z-index:2;
+  max-width:1200px;
+  padding:0 4vw;
+}
+
+.cover-text{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  text-align:left;
+  gap:6px;
 }
 
 .big-polaroid{
@@ -340,9 +351,13 @@ button{ font-family:inherit; cursor:pointer; border:none; background:none; }
 
 .cover-title{
   font-family:var(--font-display);
-  font-size:clamp(38px, 7vw, 70px);
+  font-size:clamp(40px, 6.2vw, 78px);
   color:var(--rose-deep);
-  line-height:1;
+  line-height:1.05;
+}
+
+.cover-name{
+  color:var(--pink-strong);
 }
 
 .cursive-shine{ color:var(--gold); }
@@ -618,4 +633,6 @@ button{ font-family:inherit; cursor:pointer; border:none; background:none; }
   .message-card{ padding:30px 26px; }
   .page-nav{ bottom:12px; gap:14px; }
   .music-btn{ width:46px; height:46px; top:12px; right:12px; font-size:16px; }
+  .cover-frame{ flex-direction:column-reverse; gap:20px; text-align:center; }
+  .cover-text{ align-items:center; text-align:center; }
 }
