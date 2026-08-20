@@ -58,6 +58,7 @@ envelopeBtn.addEventListener('click', () => {
   if (envelopeOpened) return;
   envelopeOpened = true;
   envelopeBtn.classList.add('opened');
+  document.body.classList.remove('on-envelope');
   setTimeout(() => {
     goToPage(1);
     // remove the envelope page from the flow entirely so it can't be
