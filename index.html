@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Happy Birthday! 🎀</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ ROTATE DEVICE OVERLAY ============ -->
+  <div id="rotate-overlay">
+    <div class="rotate-card">
+      <div class="phone-icon">📱</div>
+      <p>Please rotate your phone</p>
+      <span>This little celebration is best in landscape ✨</span>
+    </div>
+  </div>
+
+  <!-- ============ AMBIENT DECOR (balloons + sparkles) ============ -->
+  <div class="ambient" id="ambient"></div>
+
+  <!-- ============ MUSIC PLAYER ============ -->
+  <audio id="bgMusic" loop>
+    <!-- Put your song file inside the /music folder and update the src below -->
+    <source src="music/song.mp3" type="audio/mpeg">
+  </audio>
+  <button id="musicBtn" class="music-btn" aria-label="Play music">
+    <span class="music-icon">♪</span>
+    <span class="music-note n1">♪</span>
+    <span class="music-note n2">♫</span>
+    <span class="music-note n3">♪</span>
+  </button>
+
+  <!-- ============ APP SHELL ============ -->
+  <main id="book">
+
+    <!-- PAGE 0 — COVER -->
+    <section class="page cover-page active" data-page="0">
+      <div class="confetti-layer" id="confetti"></div>
+      <div class="cover-frame">
+        <div class="polaroid big-polaroid">
+          <!-- Replace images/cover.jpg with the celebrant's photo -->
+          <img src="images/cover.jpg" alt="Birthday girl" onerror="this.parentElement.classList.add('img-missing')">
+          <div class="img-fallback">
+            <span>💗</span>
+            <p>images/cover.jpg</p>
+          </div>
+        </div>
+        <p class="eyebrow">a little celebration for</p>
+        <h1 class="cover-title">Her Name<span class="cursive-shine">.</span></h1>
+        <p class="cover-sub">turning wonderful, one candle at a time 🎂</p>
+        <button class="enter-btn" id="enterBtn">
+          <span>Open my gift</span>
+          <span class="btn-heart">🎀</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- PAGE 1 — BIRTHDAY MESSAGE -->
+    <section class="page message-page" data-page="1">
+      <div class="page-inner">
+        <p class="eyebrow">page one</p>
+        <h2 class="page-title">Birthday Message</h2>
+
+        <div class="message-card">
+          <div class="tape tape-left"></div>
+          <div class="tape tape-right"></div>
+          <!--
+            ✏️ EDIT YOUR MESSAGE HERE
+            Replace the paragraph text below with your own birthday message.
+            You can add or remove <p> lines freely.
+          -->
+          <p class="message-text">
+            Write your birthday message to her here. Talk about the moments you
+            treasure, the things you love about her, and all the happiness you
+            wish for her this year. Keep going for as long as your heart wants —
+            this whole card was made just for these words. 💕
+          </p>
+          <p class="message-signoff">With all my love,<br><span>Your Name</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2 — HER GALLERY -->
+    <section class="page gallery-page" data-page="2">
+      <div class="page-inner">
+        <p class="eyebrow">page two</p>
+        <h2 class="page-title">Her Gallery</h2>
+
+        <div class="gallery-grid">
+          <!-- Drop photos into /images and update the filenames below (gallery1.jpg ... gallery6.jpg) -->
+          <figure class="polaroid tilt-1">
+            <img src="images/gallery1.jpg" alt="Memory 1" onerror="this.parentElement.classList.add('img-missing')">
+            <div class="img-fallback"><span>📷</span><p>images/gallery1.jpg</p></div>
+            <figcaption>caption here</figcaption>
+          </figure>
+          <figure class="polaroid tilt-2">
+            <img src="images/gallery2.jpg" alt="Memory 2" onerror="this.parentElement.classList.add('img-missing')">
+            <div class="img-fallback"><span>📷</span><p>images/gallery2.jpg</p></div>
+            <figcaption>caption here</figcaption>
+          </figure>
+          <figure class="polaroid tilt-3">
+            <img src="images/gallery3.jpg" alt="Memory 3" onerror="this.parentElement.classList.add('img-missing')">
+            <div class="img-fallback"><span>📷</span><p>images/gallery3.jpg</p></div>
+            <figcaption>caption here</figcaption>
+          </figure>
+          <figure class="polaroid tilt-4">
+            <img src="images/gallery4.jpg" alt="Memory 4" onerror="this.parentElement.classList.add('img-missing')">
+            <div class="img-fallback"><span>📷</span><p>images/gallery4.jpg</p></div>
+            <figcaption>caption here</figcaption>
+          </figure>
+          <figure class="polaroid tilt-5">
+            <img src="images/gallery5.jpg" alt="Memory 5" onerror="this.parentElement.classList.add('img-missing')">
+            <div class="img-fallback"><span>📷</span><p>images/gallery5.jpg</p></div>
+            <figcaption>caption here</figcaption>
+          </figure>
+          <figure class="polaroid tilt-6">
+            <img src="images/gallery6.jpg" alt="Memory 6" onerror="this.parentElement.classList.add('img-missing')">
+            <div class="img-fallback"><span>📷</span><p>images/gallery6.jpg</p></div>
+            <figcaption>caption here</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="page-nav">
+    <button class="nav-arrow prev" id="prevBtn" aria-label="Previous page">‹</button>
+
+    <div class="page-dots" id="pageDots">
+      <button class="dot active" data-goto="0" aria-label="Cover"><span>🎀</span></button>
+      <button class="dot" data-goto="1" aria-label="Birthday Message"><span>💌</span></button>
+      <button class="dot" data-goto="2" aria-label="Her Gallery"><span>🖼️</span></button>
+    </div>
+
+    <button class="nav-arrow next" id="nextBtn" aria-label="Next page">›</button>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
