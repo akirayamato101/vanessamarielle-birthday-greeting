@@ -31,7 +31,8 @@ function goToPage(index){
 }
 
 function updateArrows(){
-  prevBtn.disabled = current === 0;
+  const minPage = envelopeOpened ? 1 : 0;
+  prevBtn.disabled = current === minPage;
   nextBtn.disabled = current === pages.length - 1;
 }
 
@@ -57,7 +58,13 @@ envelopeBtn.addEventListener('click', () => {
   if (envelopeOpened) return;
   envelopeOpened = true;
   envelopeBtn.classList.add('opened');
-  setTimeout(() => goToPage(1), 1100);
+  setTimeout(() => {
+    goToPage(1);
+    // remove the envelope page from the flow entirely so it can't be
+    // navigated back to, and hide its dot
+    pages[0].style.display = 'none';
+    dots[0].style.display = 'none';
+  }, 1100);
 });
 
 // allow left/right arrow keys to browse
