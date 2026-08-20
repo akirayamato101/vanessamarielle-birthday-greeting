@@ -13,7 +13,11 @@ function goToPage(index){
 
   const goingForward = index > current;
   pages[current].classList.remove('active');
-  pages[current].classList.add(goingForward ? 'exit-left' : '');
+  if (goingForward) {
+    pages[current].classList.add('exit-left');
+  } else {
+    pages[current].classList.remove('exit-left');
+  }
   pages[index].classList.remove('exit-left');
   pages[index].classList.add('active');
 
