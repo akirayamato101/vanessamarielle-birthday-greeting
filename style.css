@@ -313,12 +313,13 @@ button{ font-family:inherit; cursor:pointer; border:none; background:none; }
   aspect-ratio:1/1;
   border-radius:2px;
   background:
-    repeating-linear-gradient(135deg, var(--blush-soft), var(--blush-soft) 10px, #ffe0ec 10px, #ffe0ec 20px);
+    repeating-linear-gradient(135deg, var(--pink-mid), var(--pink-mid) 10px, var(--pink-strong) 10px, var(--pink-strong) 20px);
   align-items:center;
   justify-content:center;
   flex-direction:column;
   gap:6px;
-  color:var(--rose-deep);
+  color:var(--white);
+  border:2px dashed var(--rose-deep);
 }
 
 .polaroid.img-missing .img-fallback{ display:flex; }

@@ -11,15 +11,17 @@ let current = 0;
 function goToPage(index){
   if (index < 0 || index >= pages.length || index === current) return;
 
-  const goingForward = index > current;
-  pages[current].classList.remove('active');
-  if (goingForward) {
-    pages[current].classList.add('exit-left');
-  } else {
-    pages[current].classList.remove('exit-left');
-  }
-  pages[index].classList.remove('exit-left');
-  pages[index].classList.add('active');
+  // Explicitly set every page's state on every navigation, so no page
+  // can ever get stuck with a leftover class that hides its content.
+  pages.forEach((page, i) => {
+    page.classList.remove('active', 'exit-left');
+    if (i === index) {
+      page.classList.add('active');
+    } else if (i < index) {
+      page.classList.add('exit-left');
+    }
+    // pages after the target simply have no class -> default (hidden, off to the right)
+  });
 
   dots[current].classList.remove('active');
   dots[index].classList.add('active');
