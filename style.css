@@ -616,6 +616,12 @@ button{ font-family:inherit; cursor:pointer; border:none; background:none; }
   transition:top 0.4s ease, right 0.4s ease, left 0.4s ease, opacity 0.4s ease;
 }
 
+/* Hide the prev/next + dots navigation entirely while on the envelope
+   (first) page — nothing to navigate to yet until it's opened */
+body.on-envelope .page-nav{
+  display:none;
+}
+
 /* While the envelope page is showing, move the music button + hint
    to sit above the envelope instead of the corner */
 body.on-envelope .music-btn{
