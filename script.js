@@ -7,6 +7,7 @@ const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 
 let current = 0;
+document.body.classList.add('nav-hidden');
 
 function goToPage(index){
   if (index < 0 || index >= pages.length || index === current) return;
@@ -28,6 +29,10 @@ function goToPage(index){
 
   current = index;
   updateArrows();
+
+  // keep nav hidden through the envelope + cover pages, reveal it once
+  // the message page (2nd real page) opens
+  document.body.classList.toggle('nav-hidden', current < 2);
 }
 
 function updateArrows(){
