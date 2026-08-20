@@ -30,6 +30,10 @@ html, body{
   background:var(--blush);
 }
 
+/* On small screens each .page already scrolls internally (overflow-y:auto
+   below), so body stays locked to avoid double scrollbars / bounce glitches
+   in in-app browsers like Messenger's. */
+
 button{ font-family:inherit; cursor:pointer; border:none; background:none; }
 
 ::selection{ background:var(--pink-mid); color:var(--white); }
@@ -82,11 +86,10 @@ button{ font-family:inherit; cursor:pointer; border:none; background:none; }
   color:var(--ink-soft);
 }
 
-/* show overlay only when the viewport is a small screen AND in portrait */
-@media (orientation:portrait) and (max-width:900px){
-  #rotate-overlay{ display:flex; }
-  #book, .page-nav, .music-btn, .ambient{ visibility:hidden; }
-}
+/* Portrait is now the primary supported layout (most links get opened
+   from Messenger/chat apps, held upright) — the rotate overlay is kept
+   in the markup only as a fallback and is never shown by default. */
+#rotate-overlay{ display:none !important; }
 
 /* =========================================================
    AMBIENT BACKGROUND — drifting balloons & sparkles
@@ -656,15 +659,73 @@ body.on-envelope .music-hint{
 }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE — PORTRAIT PHONES (primary mobile layout)
+   ========================================================= */
+@media (max-width:600px){
+
+  .page{ padding:8vh 5vw 14vh; align-items:flex-start; }
+  .page-inner{ padding-top:2vh; }
+  .envelope-page{ align-items:center; }
+
+  /* Envelope intro */
+  .envelope-scene{ gap:16px; }
+  .envelope{ width:clamp(180px, 60vw, 260px); }
+  .envelope-hint{ font-size:18px; }
+  .envelope-caption{ font-size:18px; }
+
+  /* Cover page — stack photo above text, everything centered */
+  .cover-frame{
+    flex-direction:column;
+    gap:18px;
+    padding:0 2vw;
+  }
+  .cover-text{ align-items:center; text-align:center; }
+  .big-polaroid{ width:clamp(160px, 55vw, 220px); margin-bottom:4px; }
+  .cover-title{ font-size:clamp(32px, 9vw, 48px); }
+  .cover-sub{ font-size:14px; }
+  .enter-btn{ margin-top:20px; padding:12px 26px; font-size:14px; }
+
+  /* Birthday message card */
+  .message-card{ padding:32px 22px; border-radius:14px; }
+  .message-text{ font-size:19px; line-height:1.55; }
+  .message-signoff{ font-size:17px; }
+  .message-signoff span{ font-size:20px; }
+  .tape{ width:48px; height:20px; }
+  .tape-left{ left:18px; }
+  .tape-right{ right:18px; }
+  .page-title{ font-size:clamp(26px, 7vw, 36px); margin-bottom:3vh; }
+
+  /* Gallery — 2 columns instead of 3 so photos aren't tiny */
+  .gallery-grid{
+    grid-template-columns:repeat(2, minmax(120px, 1fr));
+    gap:20px 16px;
+    max-width:360px;
+  }
+
+  /* Nav + music button sized down and kept clear of content */
+  .page-nav{ bottom:10px; gap:12px; }
+  .nav-arrow{ width:38px; height:38px; font-size:19px; }
+  .page-dots{ padding:6px 10px; gap:8px; }
+  .dot{ width:30px; height:30px; font-size:13px; }
+
+  .music-btn{ width:46px; height:46px; top:12px; right:12px; font-size:16px; }
+  body.on-envelope .music-btn{ top:6%; }
+  body.on-envelope .music-hint{ top:calc(6% - 26px); font-size:13px; }
+}
+
+/* =========================================================
+   RESPONSIVE — LANDSCAPE PHONES (secondary, still supported)
    ========================================================= */
 @media (max-width:800px) and (orientation:landscape){
   .gallery-grid{ grid-template-columns:repeat(3, minmax(100px, 140px)); gap:16px 12px; }
-  .message-card{ padding:30px 26px; }
-  .page-nav{ bottom:12px; gap:14px; }
-  .music-btn{ width:46px; height:46px; top:12px; right:12px; font-size:16px; }
-  body.on-envelope .music-btn{ top:6%; }
-  body.on-envelope .music-hint{ top:calc(6% - 24px); font-size:13px; }
-  .cover-frame{ flex-direction:column-reverse; gap:20px; text-align:center; }
-  .cover-text{ align-items:center; text-align:center; }
+  .message-card{ padding:24px 26px; }
+  .message-text{ font-size:17px; line-height:1.45; }
+  .page{ padding:4vh 6vw 10vh; }
+  .page-nav{ bottom:8px; gap:14px; }
+  .music-btn{ width:42px; height:42px; top:8px; right:8px; font-size:15px; }
+  body.on-envelope .music-btn{ top:4%; }
+  body.on-envelope .music-hint{ top:calc(4% - 22px); font-size:12px; }
+  .cover-frame{ flex-direction:row-reverse; gap:20px; }
+  .big-polaroid{ width:clamp(120px, 18vw, 170px); }
+  .cover-title{ font-size:clamp(26px, 5vw, 40px); }
 }
